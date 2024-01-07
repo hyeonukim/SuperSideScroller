@@ -14,4 +14,7 @@ class SUPERSIDESCROLLER_API AEnemyBase : public ASuperSideScrollerCharacter
 {
 	GENERATED_BODY()
 	
+public:
+	AEnemyBase();
+	
 };
