@@ -81,8 +81,7 @@ void ASuperSideScrollerCharacter::SetupPlayerInputComponent(class UInputComponen
 		//Moving
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ASuperSideScrollerCharacter::Move);
 
-		//Looking
-		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ASuperSideScrollerCharacter::Look);
+
 
 	}
 
