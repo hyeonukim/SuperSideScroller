@@ -27,11 +27,17 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Input")
 	class UInputAction* IA_Sprint;
 
+	UPROPERTY(EditAnywhere, Category = "Input")
+	class UInputAction* IA_Throw;
+
 	//start sprinting
 	void Sprint();
 
 	//stop sprinting
 	void StopSprinting();
+
+	//throw projectile
+	void ThrowProjectile();
 
 private:
 	bool bIsSprinting;

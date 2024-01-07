@@ -28,6 +28,8 @@ void ASuperSideScroller_Player::SetupPlayerInputComponent(UInputComponent* Playe
 
 			EnhancedPlayerInput->BindAction(IA_Sprint, ETriggerEvent::Triggered, this, &ASuperSideScroller_Player::Sprint);
 			EnhancedPlayerInput->BindAction(IA_Sprint, ETriggerEvent::Completed, this, &ASuperSideScroller_Player::StopSprinting);
+
+			EnhancedPlayerInput->BindAction(IA_Throw, ETriggerEvent::Triggered, this, &ASuperSideScroller_Player::ThrowProjectile);
 		}
 	}
 }
@@ -47,4 +49,9 @@ void ASuperSideScroller_Player::StopSprinting()
 		GetCharacterMovement()->MaxWalkSpeed = 300.0f;
 	}
 
+}
+
+void ASuperSideScroller_Player::ThrowProjectile()
+{
+	UE_LOG(LogTemp, Warning, TEXT("THROW PROJECTILE"));
 }
