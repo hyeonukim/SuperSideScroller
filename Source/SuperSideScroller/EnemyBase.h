@@ -15,6 +15,13 @@ class SUPERSIDESCROLLER_API AEnemyBase : public ASuperSideScrollerCharacter
 	GENERATED_BODY()
 	
 public:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	class UParticleSystem* DeathEffect;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	class USoundBase* DeathSound;
+
 	AEnemyBase();
 	
+	void DestroyEnemy();
 };

@@ -30,6 +30,12 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Input")
 	class UInputAction* IA_Throw;
 
+	UPROPERTY(EditAnywhere)
+	class UAnimMontage* ThrowMontage;
+
+	UPROPERTY(EditAnywhere)
+	class TSubclassOf<class APlayerProjectile> PlayerProjectile;
+
 	//start sprinting
 	void Sprint();
 
@@ -38,6 +44,9 @@ protected:
 
 	//throw projectile
 	void ThrowProjectile();
+
+public:
+	void SpawnProjectile();
 
 private:
 	bool bIsSprinting;

@@ -18,8 +18,22 @@ public:
 	UPROPERTY(VisibleDefaultsOnly, Category = Projectile)
 	class USphereComponent* CollisionComp;
 
+	UPROPERTY(VisibleDefaultsOnly, Category = Sound)
+	class UAudioComponent* ProjectileMovementSound;
+
+	UPROPERTY(VisibleDefaultsOnly, Category = Projectile)
+	class UParticleSystemComponent* ProjectileEffect;
+
+	UPROPERTY(EditAnywhere, Category = Sound)
+	class USoundBase* DestroySound;
+
+	UPROPERTY(EditAnywhere, Category = Projectile)
+	class UParticleSystem* DestroyEffect;
+
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+	
+	void ExplodeProjectile();
 
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Movement, meta = (AllowPrivateAccess = "true"))
