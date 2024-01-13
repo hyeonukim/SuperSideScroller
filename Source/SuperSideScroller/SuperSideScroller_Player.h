@@ -13,41 +13,60 @@ UCLASS()
 class SUPERSIDESCROLLER_API ASuperSideScroller_Player : public ASuperSideScrollerCharacter
 {
 	GENERATED_BODY()
-
-public:
-	ASuperSideScroller_Player();
 	
-protected:
-	//re set the charaacter input component from its parent class
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	//Constructor
+	ASuperSideScroller_Player();
 
+protected:
+	//Override base character class function to set up our player input component
+	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
+
+	
 	UPROPERTY(EditAnywhere, Category = "Input")
-	class UInputMappingContext* IC_Character; 
+	class UInputMappingContext* IC_Character;
 
 	UPROPERTY(EditAnywhere, Category = "Input")
 	class UInputAction* IA_Sprint;
-
+	
 	UPROPERTY(EditAnywhere, Category = "Input")
 	class UInputAction* IA_Throw;
+	
+
+	//Sprinting
+	void Sprint();
+
+	//Stop Sprinting
+	void StopSprinting();
+
+	//Throw projectile
+	void ThrowProjectile();
+
+	void EndPowerup();
+	
+public:
+	
+	void SpawnProjectile();
+
+	UFUNCTION(BlueprintPure)
+	int32 GetCurrentNumberofCollectables() { return NumberofCollectables; };
+
+	void IncrementNumberofCollectables(int32  Value);
+
+	void IncreaseMovementPowerup();
+
+private:
+	//Bool to control if we are sprinting. Failsafe.
+	bool bIsSprinting;
 
 	UPROPERTY(EditAnywhere)
 	class UAnimMontage* ThrowMontage;
 
-	UPROPERTY(EditAnywhere)
-	class TSubclassOf<class APlayerProjectile> PlayerProjectile;
+	UPROPERTY(EditAnywhere) 
+	TSubclassOf<class APlayerProjectile> PlayerProjectile;
 
-	//start sprinting
-	void Sprint();
+	int32 NumberofCollectables;
 
-	//stop sprinting
-	void StopSprinting();
+	FTimerHandle PowerupHandle;
 
-	//throw projectile
-	void ThrowProjectile();
-
-public:
-	void SpawnProjectile();
-
-private:
-	bool bIsSprinting;
+	bool bHasPowerupActive;
 };
